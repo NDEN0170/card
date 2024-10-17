@@ -1,13 +1,15 @@
 const sendChatBtn = document.querySelector(".chat-input span");
 const chatbox = document.querySelector(".chatbox");
 const chatbotToggler = document.querySelector(".chatbot-toggler");
-const chatbotToggler2 = document.querySelector(".close-btn");
+const chatbotToggler1 = document.querySelector(".close-btn");
 const chatInput = document.querySelector(".chat-input textarea");
 const chatV1 = document.querySelector(".v1");
 const chatV2 = document.querySelector(".v2");
 const chatV3 = document.querySelector(".v3");
 const chatV4 = document.querySelector(".v4");
 const chatV5 = document.querySelector(".v5");
+const chatV6 = document.querySelector(".v6");
+const chatV7 = document.querySelector(".v7");
 
 let userMessage;
 const inputInitHeight = chatInput.scrollHeight;
@@ -59,7 +61,13 @@ const answers = {
         "которых участнику начисляется 10 баллов, которые учитываются в рейтинге Амбассадоров Путешествий. " +
         "Так же предоставляется возможность составлять собственные маршруты, просматривать и оценивать чужие."
     ],
+    "как войти в личный кабинет?": ["Для входа в личный кабинет необходимо нажать на кнопку входа в личный кабинет " +
+        "на главной странице и войти с помощью своей (подтвержденной) учетной записи от единого портала госуслуг."
+    ],
+    "сколько у меня баллов?": ["Сейчас у Вас 134 балла. Вы можете потратить их для оплаты части суммы" +
+        " в следующих магазинах-партнерах или повысить свой рейтинг в амбассадорстве до 12 места."
 
+    ]
 
     // ... другие пары вопрос-ответ
 };
@@ -202,6 +210,45 @@ const chatV5input = () => {
 }
 chatV5.addEventListener("click", chatV5input)
 
+const chatV6input = () => {
+    userMessage = "Как войти в личный кабинет?";
+    if (!userMessage) return;
+    chatInput.value = "";
+    chatInput.style.height = `${inputInitHeight}px`;
+
+    //Добавление сообщения пользователя в окно чата
+    chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+
+    setTimeout(() => {
+        //Отображается сообщение "Печатает..." в ожидании ответа
+        const incomingChatLI = createChatLi("Печатает...", "incoming")
+        chatbox.appendChild(incomingChatLI);
+        chatbox.scrollTo(0, chatbox.scrollHeight);
+        generateResponse(incomingChatLI);
+    }, 600);
+}
+chatV6.addEventListener("click", chatV6input)
+
+const chatV7input = () => {
+    userMessage = "Сколько у меня баллов?";
+    if (!userMessage) return;
+    chatInput.value = "";
+    chatInput.style.height = `${inputInitHeight}px`;
+
+    //Добавление сообщения пользователя в окно чата
+    chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+
+    setTimeout(() => {
+        //Отображается сообщение "Печатает..." в ожидании ответа
+        const incomingChatLI = createChatLi("Печатает...", "incoming")
+        chatbox.appendChild(incomingChatLI);
+        chatbox.scrollTo(0, chatbox.scrollHeight);
+        generateResponse(incomingChatLI);
+    }, 600);
+}
+chatV7.addEventListener("click", chatV7input)
 
 
 sendChatBtn.addEventListener("click", handleChat);
@@ -223,8 +270,11 @@ if (chatbotToggler) {
 } else {
     console.error("Элемент с классом chatbot-toggler не найден");
 }
-if (chatbotToggler2) {
-    chatbotToggler2.addEventListener("click", () => {
+
+if (chatbotToggler1) {
+    chatbotToggler1.addEventListener("click", () => {
         document.body.classList.toggle("show-chatbot");
     });
+} else {
+    console.error("Элемент с классом chatbot-toggler не найден");
 }
