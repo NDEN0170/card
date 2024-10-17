@@ -2,6 +2,35 @@
  * Mobirise v4 theme (https://mobirise.com/)
  * Copyright 2017 Mobirise
  */
+.box {
+  display:inline-block;
+}
+
+.btn-group button {
+  background-color: #ffffffc2; /* Green background */
+  border: 2px solid rgba(6, 28, 226, 0.295); /* Green border */
+  color: rgb(0, 0, 0); /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: rgba(6, 28, 226, 0.295);
+}
+
 section {
   background-color: #ffffff; }
 
@@ -68,6 +97,8 @@ section {
     left: 0;
     right: 0;
     top: 0; }
+
+
 
 
 .hidden {
